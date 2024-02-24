@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客製化設計</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #f1f1f1;
+            padding: 10px;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+        .left-section {
+            flex: 3.5;
+            padding: 10px;
+            border-right: none;
+        }
+        .right-section {
+            flex: 6;
+            padding: 10px;
+        }
+        img {
+            max-width: 50%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+            margin-left: 100px;
+        }
+        .category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* 設定按鈕之間的間距 */
+        }
+    
+        .category-button {
+            flex: 1 0;
+            box-sizing: border-box;
+            padding: 10px 30px; /* 增加 padding 以增加按鈕的長度 */
+            text-align: center;
+            margin-bottom: 20px;
+            margin-right: 25px;
+            cursor: pointer;
+            background-color: #fff; /* 設定背景色為白色 */
+            border: 1px solid #000; /* 設定黑色框線 */
+            color: #000; /* 設定文字顏色為黑色 */
+            border-radius: 8px; /* 添加圓角 */
+            transition: background-color 0.3s; /* 設定過渡效果，使顏色變化平滑 */
+        }
+
+        .next-button {
+            flex: 1 0;
+            padding: 10px 30px; /* 增加 padding 以增加按鈕的長度 */
+            text-align: center;
+            margin-left: 500px;
+            margin-right: 500px;
+            cursor: pointer;
+            background-color: #fff; /* 設定背景色為白色 */
+            border: 1px solid #000; /* 設定黑色框線 */
+            color: #000; /* 設定文字顏色為黑色 */
+            border-radius: 8px; /* 添加圓角 */
+            transition: background-color 0.3s; /* 設定過渡效果，使顏色變化平滑 */
+        }
+        
+        .category-button.clicked {
+            background-color: rgb(78, 156, 245);          
+            color: #fff;
+        }
+        
+        figure {
+            flex: 1 0 30%;
+            margin: 10px;
+            font-size: 14px; 
+            text-align: left;
+        }
+        
+        figcaption {
+            color: #000;
+            text-align: justify;
+            text-align-last: left;
+            max-width: 400px;
+            margin: 0 auto;
+            margin-left: 40px;
+        }
+        .left-h1 {
+            margin-left: 100px;
+        }
+        .right-h1 {
+            margin-bottom: 50px;
+        }
+        a {
+            text-decoration: none; /* 移除底線 */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var buttons = document.querySelectorAll('.category-button');
+    
+            buttons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    this.classList.toggle('clicked');
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="index.html">首頁</a>
+        <a href="#">產品</a>
+        <a href="index2.html">客製化</a>
+    </nav>
+    
+    <div class="container">
+        <div class="left-section">
+            <h1 class="left-h1">選擇的客製產品</h1>
+            <figure>
+                <img src="iphone.jpg">
+                <figcaption>JTLEGEND iPhone 15 (6.1") 雙料減震保護殼-透明</figcaption>
+            </figure>
+        </div>
+        <div class="right-section">
+            <h1 class="right-h1">選擇您喜歡的分類主題</h1>
+            <div class="category-buttons">
+                <div class="category-button">聯名合作</div>
+                <div class="category-button">動漫</div>
+                <div class="category-button">韓星</div>
+                <div class="category-button">好萊塢</div>
+            </div>
+            <div class="category-buttons">
+                <div class="category-button">極簡風格</div>
+                <div class="category-button">文藝復興</div>
+                <div class="category-button">科技</div>
+                <div class="category-button">時尚潮流</div>
+            </div>
+            <div class="category-buttons">
+                <div class="category-button">星空</div>
+                <div class="category-button">植物花卉</div>
+                <div class="category-button">街頭藝術</div>
+                <div class="category-button">海洋</div>
+            </div>
+            <div class="category-buttons">
+                <div class="category-button">春季</div>
+                <div class="category-button">夏季</div>
+                <div class="category-button">秋季</div>
+                <div class="category-button">冬季</div>
+            </div>
+            <div class="category-buttons">
+                <div class="category-button">經典黑白</div>
+                <div class="category-button">可愛動物</div>
+                <div class="category-button">古典</div>
+                <div class="category-button">奇幻</div>
+            </div>
+            <div class="category-buttons">
+                <div class="category-button">文青攝影</div>
+                <div class="category-button">城市風景</div>
+                <div class="category-button">生肖主題</div>
+                <div class="category-button">星座主題</div>
+            </div>
+        </div>
+    </div>
+
+    <a href="index4.html">
+        <div class="next-button">下一步</div>
+    </a>
+</body>
+</html>
