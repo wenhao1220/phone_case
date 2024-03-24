@@ -47,7 +47,7 @@
 
         .toggle-btn {
             position: absolute;
-            left: 250px;
+            left: 0px;
             top: 10px;
             z-index: 2;
             cursor: pointer;
@@ -89,7 +89,7 @@
 <body>
     <div id="sidebar">
         <a href="index2.html">首頁</a>
-        <a href="index3.html">客製化</a>
+        <a href="index3.html">尋找圖片</a>
         <a href="index.html">登出</a>
     </div>
     <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
@@ -142,6 +142,11 @@
                 toggleBtn.style.left = '0';
             }
         }
+
+        // 初始時側邊導航
+        document.getElementById('sidebar').style.left = '-250px';
+        document.querySelector('.content').style.marginLeft = '1';
+        document.querySelector('.toggle-btn').style.left = '1';
     </script>
 </body>
 
