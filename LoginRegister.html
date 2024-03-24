@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入</title>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        #sidebar {
+            background-color: #f1f1f1;
+            width: 250px;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            z-index: 1000;
+        }
+        #sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #333;
+            display: block;
+            transition: 0.3s;
+        }
+        #sidebar a:hover {
+            color: #f1f1f1;
+            background-color: #555;
+        }
+        .content {
+            max-width: 600px;
+            margin-top: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+        .toggle-btn {
+            position: absolute;
+            left: 250px;
+            top: 10px;
+            z-index: 2;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f1f1f1;
+        }
+        .auth-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .auth-container a {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        form {
+            margin-top: 20px;
+        }
+        form input[type="email"],
+        form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #a9a6a6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        form button:hover {
+            background-color: #a9a6a6;
+        }
+    </style>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBGclJJtgLEFZCXXrkpdCFZO22Rzq85qj0",
+            authDomain: "customized-b24d0.firebaseapp.com",
+            projectId: "customized-b24d0",
+            storageBucket: "customized-b24d0.appspot.com",
+            messagingSenderId: "1036057663724",
+            appId: "1:1036057663724:web:8f9a41825b488be6e1adc9",
+            measurementId: "G-VK6CBBGVKH"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+    </script>
+</head>
+<body>
+    <div id="sidebar">
+        <a href="index.html">首頁</a>
+        <a href="LoginRegister.html">登錄/註冊</a>
+    </div>
+    <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+    <div class="content">
+        <div class="auth-container" id="login-container">
+            <h2>登入</h2>
+            <form id="login-form">
+                Email: <input type="email" id="login-email" required><br>
+                Password: <input type="password" id="login-password" required><br>
+                <button type="submit">登入</button>
+            </form>
+            <p>還沒有註冊? <a onclick="switchAuth('signup')">立即註冊</a></p>
+        </div>
+
+        <div class="auth-container" id="signup-container" style="display: none;">
+            <h2>註冊</h2>
+            <form id="signup-form">
+                Email: <input type="email" id="signup-email" required><br>
+                Password: <input type="password" id="signup-password" required><br>
+                <button type="submit">註冊</button>
+            </form>
+            <p>已有帳號? <a onclick="switchAuth('login')">返回登入</a></p>
+        </div>
+    </div>
+
+    <script>
+        function switchAuth(authType) {
+            if (authType === 'signup') {
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('signup-container').style.display = 'block';
+            } else if (authType === 'login') {
+                document.getElementById('login-container').style.display = 'block';
+                document.getElementById('signup-container').style.display = 'none';
+            }
+        }
+
+        // 註冊新用戶
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert('註冊成功！');
+                })
+                .catch((error) => {
+                    alert('錯誤：' + error.message);
+                });
+        });
+
+        // 用戶登入
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert('登入成功！');
+                    localStorage.setItem('currentUserEmail', email);
+                    window.location.href = "index2.html";
+                })
+                .catch((error) => {
+                    alert('錯誤：' + error.message);
+                });
+        });
+
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.querySelector('.content');
+            const toggleBtn = document.querySelector('.toggle-btn');
+
+            if (sidebar.style.left === '-250px') {
+                sidebar.style.left = '0';
+                content.style.marginLeft = '250px';
+                toggleBtn.style.left = '250px';
+            } else {
+                sidebar.style.left = '-250px';
+                content.style.marginLeft = '0';
+                toggleBtn.style.left = '0';
+            }
+        }
+        // 初始時側邊導航
+        document.getElementById('sidebar').style.left = '0px';
+        document.querySelector('.content').style.marginLeft = '1';
+        document.querySelector('.toggle-btn').style.left = '1';
+    </script>
+</body>
+</html>

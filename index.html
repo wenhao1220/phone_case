@@ -9,21 +9,46 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-        }
-        nav {
             display: flex;
-            justify-content: center;
-            background-color: #f1f1f1;
-            padding: 10px;
         }
-        nav a {
-            margin: 0 15px;
+        #sidebar {
+            background-color: #f1f1f1;
+            width: 250px;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        #sidebar a {
+            padding: 10px 15px;
             text-decoration: none;
+            font-size: 18px;
             color: #333;
-            font-weight: bold;
+            display: block;
+            transition: 0.3s;
+        }
+        #sidebar a:hover {
+            color: #f1f1f1;
+            background-color: #555;
+        }
+        .content {
+            margin-left: 250px;
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .toggle-btn {
+            position: absolute;
+            left: 250px;
+            top: 10px;
+            z-index: 2;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f1f1f1;
         }
         section {
-            padding: 40px;
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -51,25 +76,51 @@
     </style>
 </head>
 <body>
-    <nav>
+    <div id="sidebar">
         <a href="index.html">首頁</a>
-        <a href="#">產品</a>
-        <a href="index2.html">客製化</a>
-    </nav>
-    
-    <section>
-        <figure>
-            <img src="image1.jpg">
-            <figcaption>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.</figcaption>
-        </figure>
-        <figure>
-            <img src="image1.jpg">
-            <figcaption>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.</figcaption>
-        </figure>
-        <figure>
-            <img src="image1.jpg">
-            <figcaption>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.</figcaption>
-        </figure>
-    </section>
+        <a href="LoginRegister.html">登入/註冊</a>
+    </div>
+    <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
+    <div class="content">
+        <h1><br>文字轉圖片系統</h1>
+        <p>歡迎使用文字轉圖片系統，您可以在這裡將文字轉換成圖片。</p>
+        <section>
+            <figure>
+                <img src="image1.jpg" alt="Image1">
+                <figcaption>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</figcaption>
+            </figure>
+            <figure>
+                <img src="image1.jpg" alt="Image2">
+                <figcaption>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</figcaption>
+            </figure>
+            <figure>
+                <img src="image1.jpg" alt="Image3">
+                <figcaption>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</figcaption>
+            </figure>
+        </section>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.querySelector('.content');
+            const toggleBtn = document.querySelector('.toggle-btn');
+
+            if (sidebar.style.left === '-250px') {
+                sidebar.style.left = '0';
+                content.style.marginLeft = '250px';
+                toggleBtn.style.left = '250px';
+            } else {
+                sidebar.style.left = '-250px';
+                content.style.marginLeft = '0';
+                toggleBtn.style.left = '0';
+            }
+        }
+
+        // 初始時側邊導航
+        document.getElementById('sidebar').style.left = '0px';
+        document.querySelector('.content').style.marginLeft = '1';
+        document.querySelector('.toggle-btn').style.left = '1';
+    </script>
 </body>
 </html>
