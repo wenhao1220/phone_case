@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+#sidebar {
+    background-color: #f1f1f1;
+    width: 250px;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+    display: block;
+    transition: 0.3s;
+}
+#sidebar a:hover {
+    color: #f1f1f1;
+    background-color: #555;
+}
+.toggle-btn {
+    position: absolute;
+    left: 0px;
+    top: 10px;
+    z-index: 2;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+figure {
+    flex: 1 0 30%;
+    margin: 10px;
+}
+img {
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+figcaption {
+    font-style: italic;
+    color: #000;
+    text-align: justify;
+    text-align-last: left;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.content {
+    margin-left: 250px;
+    flex-grow: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.search-container form {
+    display: flex;
+    width: 100%; /* 根据需要调整宽度 */
+    max-width: 600px; /* 最大宽度，确保搜索栏在大屏幕上也不会太宽 */
+}
+
+.search-container input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    margin-right: 0px; /* 输入框和按钮之间的间距 */
+    border: 1px solid #ccc; /* 边框样式，可根据需要调整 */
+    border-radius: 0px; /* 轻微的圆角效果 */
+}
+
+.search-container button {
+    padding: 10px 20px;
+    background-color: #ccc; /* 按钮背景颜色，可根据需要调整 */
+    color: white; /* 按钮文字颜色 */
+    border: none;
+    cursor: pointer;
+    border-radius: 0px; /* 圆角效果 */
+}
+
+.search-container button:hover {
+    background-color: #9E9999; /* 鼠标悬停时的背景颜色 */
+}
+
+#image-gallery {
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 0;
+}
+
+#image-gallery .image-item {   
+    position: relative; 
+    margin-bottom: 20px;
+}
+
+#image-gallery .image-item img {
+    width: 100%;
+    height: auto;
+}
+
+#image-gallery .image-item label {
+    text-align: center;
+}
+
+#image-gallery .image-item input[type="checkbox"] {
+    position: absolute;
+    top: 10px;
+    left: 120px;
+}
+
+#pagination {
+    text-align: center;
+    margin-top: 20px;
+}
