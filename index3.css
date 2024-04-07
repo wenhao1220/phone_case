@@ -69,7 +69,7 @@ figcaption {
 }
 
 .content {
-    margin-left: 250px;
+    margin-left: 0px;
     flex-grow: 1;
     padding: 20px;
     text-align: center;
